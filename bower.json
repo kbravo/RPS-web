@@ -18,6 +18,8 @@
     "leapjs-rigged-hand": "~0.1.4",
     "parse": "~1.6.7",
     "three.js": "threejs#*"
+    "leapjs": "~0.6.4"
+
   },
   "resolutions": {
     "angular": "1.3.13"

@@ -10,10 +10,14 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "~3.3.5",
     "angular": "1.3.13",
+    "angular-route": "~1.4.2",
     "angular-ui-bootstrap": "~0.13.0",
-    "angular-route": "~1.4.2"
+    "bootstrap": "~3.3.5",
+    "leapjs-plugins": "~0.1.11",
+    "leapjs-rigged-hand": "~0.1.4",
+    "parse": "~1.6.7",
+    "three.js": "threejs#*"
   },
   "resolutions": {
     "angular": "1.3.13"

@@ -17,7 +17,7 @@
     "leapjs-plugins": "~0.1.11",
     "leapjs-rigged-hand": "~0.1.4",
     "parse": "~1.6.7",
-    "three.js": "threejs#*"
+    "three.js": "threejs#*",
     "leapjs": "~0.6.4"
 
   },

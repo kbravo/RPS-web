@@ -40,12 +40,10 @@ app.controller('landingController', ['$scope', '$window', '$location', '$http', 
 			name: $scope.name
 		}
 
-
-		$http.post("http://localhost:6001/join", data).
-        success(function(data) {
-            console.log("posted successfully");
-        }).error(function(data) {
-            console.error("error in posting");
-        })
+        $http({
+		    method: 'POST',
+		    url: "http://localhost:6001/join",
+		    data: "name=" + $scope.name,
+		});
 	}
 }]);

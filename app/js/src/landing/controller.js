@@ -44,6 +44,7 @@ app.controller('landingController', ['$scope', '$window', '$location', '$http', 
 		    method: 'POST',
 		    url: "http://localhost:6001/join",
 		    data: "name=" + $scope.name,
+		    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		});
 	}
 }]);

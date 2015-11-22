@@ -1,6 +1,6 @@
 var app = angular.module('myApp.landing', []);
 
-app.controller('landingController', ['$scope', '$window', '$location', '$http', '$rootScope', '$timeout', function($scope, $window, $location, $http, $rootScope, $timeout) {
+app.controller('landingController', ['$scope', '$window', '$location', '$http', '$rootScope', '$timeout', '$element', function($scope, $window, $location, $http, $rootScope, $timeout, $element) {
 	$scope.identify = "You are on landing!";
 	var CLIENT_ID = 3196;
 	var store = $window.localStorage;
@@ -39,14 +39,18 @@ app.controller('landingController', ['$scope', '$window', '$location', '$http', 
 		console.log('polling');
 		$scope.data = {};
 		var tick = function() {
+			console.log($rootScope.name);
 			$http({
 				method: 'GET',
 				url: 'http://localhost:6001/poll?name='+$rootScope.name
 			}).then(function(response) {
 				$scope.data = response.data;
 				console.log($scope.data);
+				if($scope.data == 'matched') {
+					$location.path('/play');
+				}
 			});
-			$timeout(tick, 2000);
+			$timeout(tick, 5000);
 		}
 		tick();
 	}
@@ -56,17 +60,18 @@ app.controller('landingController', ['$scope', '$window', '$location', '$http', 
 			name: $scope.name
 		}
 
+		$rootScope.name = $scope.name;
+
         $http({
 		    method: 'POST',
 		    url: "http://localhost:6001/join",
 		    data: "name=" + $scope.name,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		}).then(function(response) {
-			$rootScope.name = response;
+			
 			$scope.joined = true;
 			console.log(response);
 			pollServer();
-
 		});
 	}
 }]);

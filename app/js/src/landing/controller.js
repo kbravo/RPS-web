@@ -1,6 +1,6 @@
 var app = angular.module('myApp.landing', []);
 
-app.controller('landingController', ['$scope', '$window', '$location', '$http', function($scope, $window, $location, $http) {
+app.controller('landingController', ['$scope', '$window', '$location', '$http', '$rootScope', '$timeout', function($scope, $window, $location, $http, $rootScope, $timeout) {
 	$scope.identify = "You are on landing!";
 	var CLIENT_ID = 3196;
 	var store = $window.localStorage;
@@ -35,6 +35,22 @@ app.controller('landingController', ['$scope', '$window', '$location', '$http', 
 		$window.location.href = 'https://api.venmo.com/v1/oauth/authorize?client_id=' + CLIENT_ID + '&scope=make_payments%20access_profile&response_type=token';
 	}
 
+	var pollServer = function() {
+		console.log('polling');
+		$scope.data = {};
+		var tick = function() {
+			$http({
+				method: 'GET',
+				url: 'http://localhost:6001/poll?name='+$rootScope.name
+			}).then(function(response) {
+				$scope.data = response.data;
+				console.log($scope.data);
+			});
+			$timeout(tick, 2000);
+		}
+		tick();
+	}
+
 	$scope.join = function() {
 		var data = {
 			name: $scope.name
@@ -45,6 +61,12 @@ app.controller('landingController', ['$scope', '$window', '$location', '$http', 
 		    url: "http://localhost:6001/join",
 		    data: "name=" + $scope.name,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		}).then(function(response) {
+			$rootScope.name = response;
+			$scope.joined = true;
+			console.log(response);
+			pollServer();
+
 		});
 	}
 }]);

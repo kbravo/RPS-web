@@ -14,7 +14,12 @@ app.config(function($routeProvider) {
             controllerUrl  : 'js/src/page2/controller.js'
         })
         .otherwise({
-            redirectTo: '/page1'
+            redirectTo: '/'
         });
 });
+
+
+app.controller('appController', ['$scope', function($scope) {
+}]);
+
 })();

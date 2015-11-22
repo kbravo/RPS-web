@@ -50,7 +50,9 @@ app.controller('landingController', ['$scope', '$window', '$location', '$http', 
 					$location.path('/play');
 				}
 			});
-			$timeout(tick, 5000);
+			if($location.path() != '/play') {
+				$timeout(tick, 5000);
+			}
 		}
 		tick();
 	}

@@ -42,7 +42,7 @@ app.controller('landingController', ['$scope', '$window', '$location', '$http', 
 			console.log($rootScope.name);
 			$http({
 				method: 'GET',
-				url: 'http://localhost:6001/poll?name='+$rootScope.name
+				url: 'http://rps-server.mybluemix.net/poll?name='+$rootScope.name
 			}).then(function(response) {
 				$scope.data = response.data;
 				console.log($scope.data);
@@ -66,7 +66,7 @@ app.controller('landingController', ['$scope', '$window', '$location', '$http', 
 
         $http({
 		    method: 'POST',
-		    url: "http://localhost:6001/join",
+		    url: "http://rps-server.mybluemix.net/join",
 		    data: "name=" + $scope.name,
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		}).then(function(response) {

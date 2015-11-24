@@ -1,10 +1,10 @@
 <div ng-controller="landingController">
-	<p style="color: black; font-size: 30px; text-align:center; padding-left:200px; padding-right:200px;">Use guestures to play Rock, Paper and Scissors<br/> 
+	<p style="color: black; font-size: 30px; text-align:center; padding-left:200px; padding-right:200px;">Use guestures/<strong style="color:purple;">NOT</strong> to play <br />Rock, Paper and Scissors<br/> 
 	<b style="font-size: 40px">&</b> <br />
-	<i>Even <strong style="color:purple;"><u>bet</u></strong> on your games!</i>
+	<u><i>Even <strong style="color:purple;">bet</strong> on your games!</i></u>
 	<br/>
 	<br/>
-	But before you do -
+	<strong>But before you do -</strong>
 	</p>
 
 	<div style="text-align:center;">
@@ -15,9 +15,22 @@
 				<br />
 				<input class="form-control" ng-model='name' placeholder='your name'>
 				<br />
-				<button type='submit' ng-disabled='disablePlay()' class="btn btn-success btn-lg" style="background-color: purple;">&nbsp;&nbsp;&nbsp;Join game&nbsp;&nbsp;&nbsp;</button>
+				<button type='submit' ng-disabled='disablePlay()' class="btn btn-lg" style="color: white; background-color: purple;">&nbsp;&nbsp;&nbsp;Join game&nbsp;&nbsp;&nbsp;</button>
 				<br />
 			</form>
+			<br />
+			<br />
+			<div class="row">
+				<div class="col-xs-12 col-md-4 col-lg-4">
+					<a href="/info" style="float: right;" class="btn btn-default btn-md">&nbsp;&nbsp;&nbsp;<strong>How this works?</strong>&nbsp;&nbsp;&nbsp;</a>
+				</div>
+				<div class="col-xs-12 col-md-4 col-lg-4">
+					<img src="img/rules.png" height="250" width="250">
+				</div>
+				<div class="col-xs-12 col-md-4 col-lg-4">
+					<a href="#/play" style="float: left;" class="btn btn-default btn-md">&nbsp;&nbsp;&nbsp;<strong>Practice</strong> <img src="img/leap.png" height="35" width="100">&nbsp;&nbsp;</a>
+				</div>
+			</div>
 		</div>
 		<br/>
 		

@@ -11,78 +11,25 @@ app.config(function($routeProvider) {
             controllerUrl  : 'js/src/landing/controller.js'
         })
          .when('/play', {
-            templateUrl : 'js/src/page1/page1.html',
-            controllerUrl  : 'js/src/page1/controller.js'
+            templateUrl : 'js/src/play/page1.html',
+            controllerUrl  : 'js/src/play/controller.js'
         })
         .when('/leaderboard', {
             templateUrl : 'js/src/page2/page2.html',
             controllerUrl  : 'js/src/page2/controller.js'
         })
+        .when('/test', {
+            templateUrl : 'js/src/testpage/test.html',
+            controllerUrl  : 'js/src/testpage/controller.js'
+        })
+        .when('/info', {
+            templateUrl : 'js/src/info/info.html',
+            controllerUrl  : 'js/src/info/controller.js'
+        })
         .otherwise({
             redirectTo: '/'
         });
 });
-
-app.service('participantService', function($q) {
-     var Participant = Parse.Object.extend("Participant");
-
-    this.createParticipant = function(newParticipant) {
-        var e = new Participant();
-        e.save(newParticipant).then(function(object) {
-            alert("it worked?");
-        });
-    }
-
-    this.getParticipants = function() {
-        var queryObject = new Parse.Query(Participant);
-
-        var defer = $q.defer();
-
-        queryObject.find({
-            success: function(results) {
-                //console.log(results);
-                defer.resolve(results);
-            },
-            error: function(error) {
-                defer.reject(error);
-            }
-        });
-
-        return defer.promise;
-    }
-
-});
-
-app.service('gamesService', function($q) {
-     var Games = Parse.Object.extend("Games");
-
-    this.createParticipant = function(newGame) {
-        var e = new Games();
-        e.save(newGame).then(function(object) {
-            alert("it worked?");
-        });
-    }
-
-    this.getGames = function() {
-        var queryObject = new Parse.Query(Games);
-
-        var defer = $q.defer();
-
-        queryObject.find({
-            success: function(results) {
-                //console.log(results);
-                defer.resolve(results);
-            },
-            error: function(error) {
-                defer.reject(error);
-            }
-        });
-
-        return defer.promise;
-    }
-
-});
-
 
 app.controller('appController', ['$scope', function($scope) {
 }]);

@@ -1,6 +1,6 @@
 (function () {
 'use strict';
-var app = angular.module('myApp', ['ngRoute', 'myApp.page1', 'myApp.page2', 'myApp.landing']); //Dependency declaration for the Angular app
+var app = angular.module('myApp', ['ngRoute', 'myApp.page1', 'myApp.page2', 'myApp.landing', 'myApp.testpage', 'myApp.practice', 'myApp.credits']); //Dependency declaration for the Angular app
 
 app.config(function($routeProvider) {
     Parse.initialize("DJtjjN4Lo8Ib9vhYfLWmofj76WXPHS72dYPXuOHR", "0V7OVG8BinYF717RSWCHKPDHr10qPQSHn5gfSJ9o");
@@ -22,9 +22,17 @@ app.config(function($routeProvider) {
             templateUrl : 'js/src/testpage/test.html',
             controllerUrl  : 'js/src/testpage/controller.js'
         })
+        .when('/practice', {
+            templateUrl : 'js/src/practice/practice.html',
+            controllerUrl  : 'js/src/info/controller.js'
+        })
         .when('/info', {
             templateUrl : 'js/src/info/info.html',
             controllerUrl  : 'js/src/info/controller.js'
+        })
+        .when('/credits', {
+            templateUrl : 'js/src/credits/credits.html',
+            controllerUrl  : 'js/src/credits/controller.js'
         })
         .otherwise({
             redirectTo: '/'
